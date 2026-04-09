@@ -4,7 +4,7 @@ const chatWindow = document.getElementById('chatWindow');
 const userInput  = document.getElementById('userInput');
 const sendBtn    = document.getElementById('sendBtn');
 
-const API_URL = 'https://chefbot-cooking-assistant-production.up.railway.app/';
+const API_URL = 'https://chefbot-cooking-assistant-production.up.railway.app/api/chat';
 
 //  Send message on button click 
 async function sendMessage() {
