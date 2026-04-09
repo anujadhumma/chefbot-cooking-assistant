@@ -13,8 +13,11 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '..', 'frontend')));
+const frontendPath = process.env.NODE_ENV === 'production' 
+  ? path.join(__dirname, '..', 'frontend')
+  : path.join(__dirname, '..', 'frontend');
 
+app.use(express.static(frontendPath));
 const SYSTEM_PROMPT = `You are ChefBot, a friendly and knowledgeable AI cooking assistant. 
 Your role is to help users cook delicious meals using the ingredients they already have at home. Reply as fast as possible with clear, concise, and practical cooking advice.
 
