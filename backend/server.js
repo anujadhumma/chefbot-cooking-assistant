@@ -11,6 +11,7 @@ const app  = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
+console.log('Frontend path:', path.join(__dirname, 'frontend'));
 app.use(express.json());
 
 // Frontend is inside the backend folder when deployed on Railway
