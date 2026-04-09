@@ -1,4 +1,4 @@
-//  ChefBot Backend - server.js 
+// ChefBot Backend - server.js
 // Node.js + Express + OpenRouter AI API
 
 const express = require('express');
@@ -13,15 +13,13 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-const frontendPath = process.env.NODE_ENV === 'production' 
-  ? path.join(__dirname, '..', 'frontend')
-  : path.join(__dirname, '..', 'frontend');
+// Frontend is inside the backend folder when deployed on Railway
+app.use(express.static(path.join(__dirname, 'frontend')));
 
-app.use(express.static(frontendPath));
 const SYSTEM_PROMPT = `You are ChefBot, a friendly and knowledgeable AI cooking assistant. 
 Your role is to help users cook delicious meals using the ingredients they already have at home. Reply as fast as possible with clear, concise, and practical cooking advice.
 
-When a user tells you what ingredients they have and what kinf of recipe they want, you should:
+When a user tells you what ingredients they have and what kind of recipe they want, you should:
 1. Suggest 1–2 suitable recipes they can make can be small unless user says otherwise. Focus on dishes that are simple, tasty, and use the ingredients mentioned.
 2. For each recipe, provide:
    - A catchy recipe name with a relevant emoji
@@ -37,7 +35,7 @@ When a user tells you what ingredients they have and what kinf of recipe they wa
 Format your response clearly using markdown style headers and bullet points where appropriate.
 Always be helpful even if the ingredient list is unusual, part of cooking is improvisation!`;
 
-//  API Route: /api/chat 
+// API Route: /api/chat
 app.post('/api/chat', async (req, res) => {
   const { message } = req.body;
 
@@ -60,7 +58,7 @@ app.post('/api/chat', async (req, res) => {
         'X-Title': 'ChefBot Cooking Assistant'
       },
       body: JSON.stringify({
-        model: 'openrouter/free',  // Free model on OpenRouter
+        model: 'openrouter/free',
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
           { role: 'user',   content: message.trim() }
@@ -92,11 +90,12 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+// Serve index.html for all other routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
+  res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });
 
-//  Start server 
+// Start server
 app.listen(PORT, () => {
   console.log(`\n🍳  ChefBot server running at http://localhost:${PORT}`);
 });
