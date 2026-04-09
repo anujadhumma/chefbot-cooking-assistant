@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChefBot — AI Cooking Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-texture"></div>
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">🍳</div>
+        <div>
+          <div class="brand-name">ChefBot</div>
+          <div class="brand-tagline">AI Cooking Assistant</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Quick Ingredients</div>
+        <div class="chips-grid">
+          <button class="chip" onclick="appendIngredient('chicken')">🍗 Chicken</button>
+          <button class="chip" onclick="appendIngredient('pasta')">🍝 Pasta</button>
+          <button class="chip" onclick="appendIngredient('eggs')">🥚 Eggs</button>
+          <button class="chip" onclick="appendIngredient('tomatoes')">🍅 Tomatoes</button>
+          <button class="chip" onclick="appendIngredient('garlic')">🧄 Garlic</button>
+          <button class="chip" onclick="appendIngredient('onion')">🧅 Onion</button>
+          <button class="chip" onclick="appendIngredient('rice')">🍚 Rice</button>
+          <button class="chip" onclick="appendIngredient('cheese')">🧀 Cheese</button>
+          <button class="chip" onclick="appendIngredient('potatoes')">🥔 Potatoes</button>
+          <button class="chip" onclick="appendIngredient('spinach')">🥬 Spinach</button>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Quick Actions</div>
+        <button class="action-btn" onclick="sendQuick('What can I cook with just pantry staples?')">🥫 Pantry Only</button>
+        <button class="action-btn" onclick="sendQuick('Give me a quick 15-minute meal idea')">⚡ Quick Meal</button>
+        <button class="action-btn" onclick="sendQuick('Suggest a healthy dinner recipe')">🥗 Healthy Option</button>
+        <button class="action-btn" onclick="sendQuick('What dessert can I make easily?')">🍰 Easy Dessert</button>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CHAT -->
+    <main class="chat-main">
+      <header class="chat-header">
+        <div class="header-left">
+          <div class="status-dot"></div>
+          <span>ChefBot is ready to cook</span>
+        </div>
+        <button class="clear-btn" onclick="clearChat()" title="Clear conversation">↺ New Chat</button>
+      </header>
+
+      <div class="chat-window" id="chatWindow">
+        <!-- Welcome message -->
+        <div class="message bot-message welcome-msg">
+          <div class="avatar bot-avatar">🍳</div>
+          <div class="bubble">
+            <p>Welcome to <strong>ChefBot</strong>! 👨‍🍳</p>
+            <p>Tell me what ingredients you have on hand, and I'll suggest delicious recipes you can make right now. You can type something like:</p>
+            <div class="example-prompts">
+              <span class="example" onclick="fillInput(this.textContent)">I have chicken, garlic, and lemon</span>
+              <span class="example" onclick="fillInput(this.textContent)">Eggs, cheese, and some veggies</span>
+              <span class="example" onclick="fillInput(this.textContent)">Pasta, tomatoes, onion, and herbs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <div class="input-wrapper">
+          <textarea
+            id="userInput"
+            placeholder="List your ingredients here.."
+            rows="1"
+            onkeydown="handleKey(event)"
+            oninput="autoResize(this)"
+          ></textarea>
+          <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+            <span class="send-icon">↑</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
