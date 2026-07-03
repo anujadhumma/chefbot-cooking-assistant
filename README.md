@@ -49,9 +49,7 @@ cooking-chatbot
 
 # Step 2 - Set up environment variables
 
-There is already an API key there in .env
-
-If needed, open `backend/.env` and replace `sk-or-v1-xxxxxxxxxxxxxxxxxxxx` with your actual key. 
+Create `backend/.env` and replace `sk-or-v1-xxxxxxxxxxxxxxxxxxxx` with your actual key. 
 
 It should look like- 
 OPENROUTER_API_KEY=sk-or-v1-xxxxxxxxxxxxxxxxxxxx
