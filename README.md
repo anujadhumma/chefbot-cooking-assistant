@@ -37,15 +37,15 @@ The sidebar includes quick-tap ingredient chips and one-click action buttons for
 # Project Structure
 
 cooking-chatbot
-|--- frontend
-|   |---index.html       //Chat UI
-|   |--- style.css       //All styles
-|   |--- script.js       //API calls, DOM manipulation
-|--- backend
-|   |--- server.js       //Express server + OpenRouter integration
-|   |--- package.json    //Dependencies
-|   |--- .env            //Environment variable template
-|--- README.md
+frontend
+-index.html       //Chat UI
+- style.css       //All styles
+- script.js       //API calls, DOM manipulation
+backend
+- server.js       //Express server + OpenRouter integration
+- package.json    //Dependencies
+- .env            //Environment variable template
+README.md
 
 # Step 2 - Set up environment variables
 
