@@ -2,6 +2,7 @@
 
 ChefBot is a conversational AI chatbot that helps users discover recipes based on the ingredients they have at home.
 
+Demo at https://chefbot-cooking-assistant.onrender.com
 
 # Chatbot Functionality
 
